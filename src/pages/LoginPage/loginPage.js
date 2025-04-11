@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
 
 function LoginPage() {
-  // This hook gives you a navigate function
   const navigate = useNavigate();
   
-  // Function to handle navigation
+  // function to handle navigation
   const goToProfile = () => {
     navigate('/profile');
   };
