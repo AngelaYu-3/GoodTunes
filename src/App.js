@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// Import your existing or new page components
-import LoginPage from './pages/LoginPage/loginPage';  // Create these files if they don't exist
+import LoginPage from './pages/LoginPage/loginPage'; 
 import ProfilePage from './pages/ProfilePage/profilePage';
 import AddSongPage from './pages/AddSongPage/addSongPage';
 

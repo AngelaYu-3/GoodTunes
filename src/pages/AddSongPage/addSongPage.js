@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
 
 function AddSongPage() {
-  // This hook gives you a navigate function
   const navigate = useNavigate();
   
-  // Function to handle navigation
+  // function to handle navigation
   const goToAddSong = () => {
     navigate('/login');
   };

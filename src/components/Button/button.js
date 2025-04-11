@@ -6,7 +6,7 @@ import './button.css';
 function Button({ 
   children, 
   onClick, 
-  to = null,  // Add a "to" prop for navigation
+  to = null,
   type = 'button', 
   disabled = false, 
   className = '' 
@@ -14,12 +14,12 @@ function Button({
   const navigate = useNavigate();
   
   const handleClick = (event) => {
-    // If there's a custom onClick handler, call it
+    // if there's a custom onClick handler, call it
     if (onClick) {
       onClick(event);
     }
     
-    // If "to" prop is provided, navigate to that route
+    // if "to" prop is provided, navigate to that route
     if (to && !disabled) {
       navigate(to);
     }
