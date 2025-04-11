@@ -8,7 +8,7 @@ function LoginPage() {
   
   // Function to handle navigation
   const goToProfile = () => {
-    navigate('/login');
+    navigate('/profile');
   };
   
   return (
