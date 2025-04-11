@@ -1,7 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Import your existing or new page components
+import LoginPage from './pages/LoginPage/loginPage';  // Create these files if they don't exist
+import ProfilePage from './pages/ProfilePage/profilePage';
+import AddSongPage from './pages/AddSongPage/addSongPage';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/addSong" element={<AddSongPage />} />
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+/*import React, { useEffect, useState } from "react";
 import cong from "./configuration"; // This imports your configuration
 import { getDatabase, ref, onValue } from "firebase/database";
-// test
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -76,31 +97,4 @@ function App() {
   );
 }
 
-export default App;
-
-/* import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App; */
-
+export default App;*/
