@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
+import './profilePage.css';
 
 function ProfilePage() {
   const navigate = useNavigate();
