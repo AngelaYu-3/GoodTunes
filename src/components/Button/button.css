@@ -1,57 +1,28 @@
-/* src/components/Button/Button.css */
 .button {
-    /* Shape and sizing */
+    /* shape and sizing */
     padding: 10px 16px;
-    border-radius: 8px;  /* Rounded rectangles */
+    border-radius: 8px; 
     border: none;
+    background-color: #bdbbb6;
+    color: black;
+  
     
-    /* Your specific color scheme */
-    background-color: #074F57;
-    color: white;
-    
-    /* Typography */
+    /* typography */
     font-family: inherit;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     text-align: center;
     
-    /* Interactive behavior */
+    /* interactive behavior */
     cursor: pointer;
     transition: all 0.2s ease;
     
-    /* Prevent text selection on button */
+    /* prevent text selection on button */
     user-select: none;
     
-    /* Better alignment of text */
+    /* better alignment of text */
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
   
-  /* Hover effect */
-  .button:hover {
-    background-color: #053c42;  /* Slightly darker shade when hovering */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Active/pressed state */
-  .button:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Disabled state */
-  .button:disabled {
-    background-color: #6c8a8c;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-    opacity: 0.7;
-  }
-  
-  /* Focus state for accessibility */
-  .button:focus {
-    outline: 2px solid #074F57;
-    outline-offset: 2px;
-  }
