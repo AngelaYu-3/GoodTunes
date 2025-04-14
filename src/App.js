@@ -1,8 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/loginPage'; 
+import RegistrationPage from './pages/RegistrationPage/registrationPage';
 import ProfilePage from './pages/ProfilePage/profilePage';
 import AddSongPage from './pages/AddSongPage/addSongPage';
+
+function PrivateRoute( { children }) {
+  const user = localStorage.getItem('userId');
+
+  if (!user) {
+    return <Navigate to="/login" replace/>;
+  }
+
+  return children;
+}
 
 function App() {
   return (
@@ -10,8 +21,23 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/addSong" element={<AddSongPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="addSong"
+          element={
+            <PrivateRoute>
+            <AddSongPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );

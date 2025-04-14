@@ -2,43 +2,78 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import './loginPage.css';
+import { loginUser, getCurrentUser } from '../../firebase'
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
   
-  // function to handle navigation
-  const goToProfile = () => {
-    navigate('/profile');
-  };
+  // check if user is already logged in on component mount
+  useEffect(() => {
+    const checkAuthState = async () => {
+      try {
+        const user = await getCurrentUser();
+        if (user) {
+          // user is already logged in, redirect to profile
+          navigate('/profile');
+        }
+      } catch (error) {
+        console.error("auth state check error: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // function to handle login submission 
-  // fix later to deal with authentication w/ firebase--function needs to be asynchronous
-  const handleSubmit = (e) => {
+    checkAuthState();
+  }, [navigate]);
+
+  // function to handle login submission w/ authentication
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    // handle authentication here
-    console.log('Login attempt with:', username, password);
-    goToProfile();
+    try {
+      const result = await loginUser(email, password);
+
+      if (result.success) {
+        // login successful
+        console.log('login successful: ', result.userData);
+        navigate('/profile');
+      } else {
+        // login failed
+        setError(result.error || 'Login failed. Please check your email and password.');
+      }
+    } catch (error) {
+      console.error('Login error: ', error);
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   }
   
   return (
     <div className="login-page">
       <div className="login-form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="username"
-              required
-            />
-          </div>
-          
-          <div className="form-group">
+        {loading && !error ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          <form on Submit={handleSubmit}>
+            <div className="form-group">
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="username"
+                required
+              />            
+            </div>
+
+            <div className="form-group">
             <input
               type="password"
               id="password"
@@ -48,11 +83,18 @@ function LoginPage() {
               required
             />
           </div>
-          
-          <Button type="submit" className="login-button">
-            Login
+
+          {error && <div className="error-message">{error}</div>}
+
+          <Button
+            type="submit"
+            className="login-button"
+            disabled={loading}
+            >
+              {loading ? 'Logging in...' : 'Login'}
           </Button>
-        </form>
+          </form>
+        )}      
       </div>
     </div>
   );
