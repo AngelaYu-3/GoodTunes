@@ -64,11 +64,11 @@ function LoginPage() {
           <form on Submit={handleSubmit}>
             <div className="form-group">
               <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="username"
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
                 required
               />            
             </div>
