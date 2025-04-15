@@ -71,6 +71,16 @@ export const loginUser = async (email, password) => {
     // get user profile information
     const userSnapshot = await get(ref(database, `users/${user.uid}`));
     const userData = userSnapshot.exists() ? userSnapshot.val() : {};
+
+    return {
+      success: true,
+      userData: {
+        uid: user.uid,
+        email: user.email,
+        ...userData
+      }
+    };
+    
   } catch (error) {
     console.error("Loging error: ", error);
     return { success: false, error: error.message };

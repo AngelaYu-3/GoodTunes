@@ -19,8 +19,7 @@ function LoginPage() {
 
     try {
       const result = await loginUser(email, password);
-
-      if (result && result.success) {
+      if (result.success) {
         // login successful
         console.log('login successful: ', result.userData);
         localStorage.setItem('userId', result.userData.uid);
@@ -39,6 +38,9 @@ function LoginPage() {
   
   return (
     <div className="login-page">
+      <div className = "logo">
+        <h1>GoodTunes</h1>
+      </div>
       <div className="login-form-container">
           <form onSubmit={handleSubmit}>
             <div className="form-group">

@@ -15,19 +15,19 @@ function App() {
       console.log("Starting auth check");
       try {
         const currentUser = await getCurrentUser();
-        console.log("Auth check result:", currentUser);
+        // console.log("Auth check result:", currentUser);
         if (currentUser) {
           // User is logged in
           localStorage.setItem('userId', currentUser.uid);
           setUser(currentUser);
-          console.log("User authenticated:", currentUser.uid);
+          // console.log("User authenticated:", currentUser.uid);
         } else {
-          console.log("No user found");
+          // console.log("No user found");
         }
       } catch (error) {
         console.error("Auth check error:", error);
       } finally {
-        console.log("Setting loading to false");
+        // console.log("Setting loading to false");
         setLoading(false);
       }
     };
@@ -35,14 +35,12 @@ function App() {
     checkAuth();
   }, []);
 
-
-
   if (loading) {
     // Show a loading spinner or screen while checking auth
     return <div className="app-loading">Loading...</div>;
   }
 
-  console.log("Rendering with state:", { loading, user });
+  // console.log("Rendering with state:", { loading, user });
 
   return (
     <Router>
