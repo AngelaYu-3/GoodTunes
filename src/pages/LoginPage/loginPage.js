@@ -93,6 +93,11 @@ function LoginPage() {
             >
               {loading ? 'Logging in...' : 'Login'}
           </Button>
+
+          <div className="login-links">
+            <a href="/register">Create Account</a>
+            <a href="/forgot-password">Forgot Password</a>
+          </div>
           </form>
         )}      
       </div>
