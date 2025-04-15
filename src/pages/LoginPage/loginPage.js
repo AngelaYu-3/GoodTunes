@@ -11,31 +11,6 @@ function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [authChecked, setAuthChecked] = useState(false);
-  
-  // check if user is already logged in on component mount
-  useEffect(() => {
-    const checkAuthState = async () => {
-      try {
-        const user = await getCurrentUser();
-        if (user) {
-          localStorage.setItem('userId', user.uid);
-          // user is already logged in, redirect to profile
-          navigate('/profile', { replace: true });
-        }
-      } catch (error) {
-        console.error("auth state check error: ", error);
-      } finally {
-        setLoading(false);
-        setAuthChecked(true)
-      }
-    };
-
-    checkAuthState();
-  }, 500);
-
-  return () => clearTimeout(timer);
-}, [];
-
 
   // function to handle login submission w/ authentication
   const handleSubmit = async (e) => {
@@ -60,12 +35,12 @@ function LoginPage() {
     } finally {
       setLoading(false);
     }
-  }
+  };
   
   return (
     <div className="login-page">
       <div className="login-form-container">
-        {loading && !error ? (
+        {loading && !authChecked ? (
           <div className="loading">Loading...</div>
         ) : (
           <form onSubmit={handleSubmit}>
@@ -81,30 +56,30 @@ function LoginPage() {
             </div>
 
             <div className="form-group">
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="password"
-              required
-            />
-          </div>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+            </div>
 
-          {error && <div className="error-message">{error}</div>}
+            {error && <div className="error-message">{error}</div>}
 
-          <Button
-            type="submit"
-            className="login-button"
-            disabled={loading}
+            <Button
+              type="submit"
+              className="login-button"
+              disabled={loading}
             >
               {loading ? 'Logging in...' : 'Login'}
-          </Button>
+            </Button>
 
-          <div className="login-links">
-            <a href="/register">Create Account</a>
-            <a href="/forgot-password">Forgot Password</a>
-          </div>
+            <div className="login-links">
+              <a href="/register">Create Account</a>
+              <a href="/forgot-password">Forgot Password</a>
+            </div>
           </form>
         )}      
       </div>
