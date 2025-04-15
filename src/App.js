@@ -1,18 +1,33 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect, useState} from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/loginPage'; 
 import RegistrationPage from './pages/RegistrationPage/registrationPage';
 import ProfilePage from './pages/ProfilePage/profilePage';
 import AddSongPage from './pages/AddSongPage/addSongPage';
 
-function PrivateRoute( { children }) {
-  const user = localStorage.getItem('userId');
+function PrivateRoute({ children }) {
+  const [checked, setChecked] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
-  if (!user) {
-    return <Navigate to="/login" replace/>;
-  }
+  useEffect(() => {
+    // Only check once
+    if (!checked) {
+      const userId = localStorage.getItem('userId');
+      console.log("PrivateRoute checking auth, userId:", userId);
+      
+      if (!userId) {
+        navigate('/login', { replace: true });
+      } else {
+        setAuthenticated(true);
+      }
+      setChecked(true);
+    }
+  }, [checked, navigate]);
 
-  return children;
+  if (!checked) return <div>Loading...</div>;
+  
+  return authenticated ? children : null;
 }
 
 function App() {

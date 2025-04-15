@@ -10,6 +10,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [authChecked, setAuthChecked] = useState(false);
   
   // check if user is already logged in on component mount
   useEffect(() => {
@@ -17,18 +18,24 @@ function LoginPage() {
       try {
         const user = await getCurrentUser();
         if (user) {
+          localStorage.setItem('userId', user.uid);
           // user is already logged in, redirect to profile
-          navigate('/profile');
+          navigate('/profile', { replace: true });
         }
       } catch (error) {
         console.error("auth state check error: ", error);
       } finally {
         setLoading(false);
+        setAuthChecked(true)
       }
     };
 
     checkAuthState();
-  }, [navigate]);
+  }, 500);
+
+  return () => clearTimeout(timer);
+}, [];
+
 
   // function to handle login submission w/ authentication
   const handleSubmit = async (e) => {
@@ -61,7 +68,7 @@ function LoginPage() {
         {loading && !error ? (
           <div className="loading">Loading...</div>
         ) : (
-          <form on Submit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 type="email"

@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailaAndPassword,
+  signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
 } from "firebase/auth";
@@ -133,13 +133,13 @@ export const removeSongFromUser = async (userId, songId) => {
 export const getUserSongs = async (userId) => {
   try {
     // get song IDs from user_songs
-    const userSongSnapshot = await get(ref(database, `user_songs/${userId}`));
+    const userSnapshot = await get(ref(database, `user_songs/${userId}`));
 
     if (!userSnapshot.exists()) {
       return { success: true, songs: [] };
     }
 
-    const songIds = Object.keys(userSongsSnapshot.val());
+    const songIds = Object.keys(userSnapshot.val());
 
     // get details for each song
     const songs = [];
@@ -169,7 +169,7 @@ export const createSong = async (title, artist) => {
     await set(songRef, {
       title,
       artist,
-      createdAt: newDate().toISOString()
+      createdAt: new Date().toISOString()
     });
 
     return { success: true };
