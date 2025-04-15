@@ -9,8 +9,7 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [authChecked, setAuthChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // function to handle login submission w/ authentication
   const handleSubmit = async (e) => {
@@ -21,9 +20,10 @@ function LoginPage() {
     try {
       const result = await loginUser(email, password);
 
-      if (result.success) {
+      if (result && result.success) {
         // login successful
         console.log('login successful: ', result.userData);
+        localStorage.setItem('userId', result.userData.uid);
         navigate('/profile');
       } else {
         // login failed
@@ -40,9 +40,6 @@ function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-form-container">
-        {loading && !authChecked ? (
-          <div className="loading">Loading...</div>
-        ) : (
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
@@ -80,8 +77,7 @@ function LoginPage() {
               <a href="/register">Create Account</a>
               <a href="/forgot-password">Forgot Password</a>
             </div>
-          </form>
-        )}      
+          </form>     
       </div>
     </div>
   );

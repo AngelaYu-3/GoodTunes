@@ -35,10 +35,14 @@ function App() {
     checkAuth();
   }, []);
 
+
+
   if (loading) {
     // Show a loading spinner or screen while checking auth
     return <div className="app-loading">Loading...</div>;
   }
+
+  console.log("Rendering with state:", { loading, user });
 
   return (
     <Router>
