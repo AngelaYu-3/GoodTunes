@@ -4,7 +4,7 @@ import Button from '../../components/Button/button';
 import './loginPage.css';
 import { loginUser, getCurrentUser } from '../../firebase'
 
-function LoginPage() {
+function LoginPage({ setUser }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +21,12 @@ function LoginPage() {
       const result = await loginUser(email, password);
       if (result.success) {
         // login successful
-        console.log('login successful: ', result.userData);
         localStorage.setItem('userId', result.userData.uid);
-        navigate('/profile');
+        console.log('login successful');
+        //window.location.reload();
+        setUser(result.userData);
+        navigate('/profile', { replace: true, state: { time: Date.now() } });
+        //navigate('/profile');
       } else {
         // login failed
         setError(result.error || 'Login failed. Please check your email and password.');

@@ -8,6 +8,7 @@ function LogoutButton({ className }) {
   
   const handleLogout = async () => {
     try {
+      // document.querySelector('.profile-page').classList.add('page-exit');
       // Sign out from Firebase
       await logoutUser();
       
@@ -15,6 +16,7 @@ function LogoutButton({ className }) {
       localStorage.removeItem('userId');
       
       // Redirect to login page
+      window.location.reload();
       navigate('/login', { replace: true });
     } catch (error) {
       console.error('Logout error:', error);

@@ -4,7 +4,7 @@ import Button from '../../components/Button/button';
 import LogoutButton from '../../components/LogoutButton/logoutButton'
 import './profilePage.css';
 
-function ProfilePage() {
+function ProfilePage({ setUser }) {
   const navigate = useNavigate();
   
   // function to handle navigation
@@ -16,7 +16,6 @@ function ProfilePage() {
     <div className="profile-page">
       <h1>Profile Page</h1>
       <LogoutButton className="profile-logout-button" />
-
       <Button to={"/addSong"}>Go to Add Song</Button>
     </div>
   );

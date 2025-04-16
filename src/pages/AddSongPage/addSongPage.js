@@ -8,15 +8,15 @@ function AddSongPage() {
   const navigate = useNavigate();
   
   // function to handle navigation
-  const goToAddSong = () => {
-    navigate('/login');
+  const goToProfile = () => {
+    navigate('/profile');
   };
   
   return (
     <div className="addSong-page">
       <h1>Add Song Page</h1>
       <LogoutButton className="profile-logout-button" />
-      <Button to={"/login"}>Go Back to LogIn</Button>
+      <Button to={"/profile"}>Go To Profile</Button>
     </div>
   );
 }

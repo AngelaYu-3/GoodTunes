@@ -5,6 +5,7 @@ import RegistrationPage from './pages/RegistrationPage/registrationPage';
 import ProfilePage from './pages/ProfilePage/profilePage';
 import AddSongPage from './pages/AddSongPage/addSongPage';
 import { getCurrentUser } from './firebase'; // Import your getCurrentUser function
+import './App.css'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ function App() {
       console.log("Starting auth check");
       try {
         const currentUser = await getCurrentUser();
-        // console.log("Auth check result:", currentUser);
+        console.log("Auth check result:", currentUser);
         if (currentUser) {
           // User is logged in
           localStorage.setItem('userId', currentUser.uid);
@@ -37,7 +38,7 @@ function App() {
 
   if (loading) {
     // Show a loading spinner or screen while checking auth
-    return <div className="app-loading">Loading...</div>;
+    return <div className="App-loading"></div>;
   }
 
   // console.log("Rendering with state:", { loading, user });
@@ -54,21 +55,21 @@ function App() {
         {/* For login and register, redirect to profile if already logged in */}
         <Route 
           path="/login" 
-          element={user ? <Navigate to="/profile" replace /> : <LoginPage />} 
+          element={user ? <Navigate to="/profile" replace /> : <LoginPage setUser={setUser}/>} 
         />
         <Route 
           path="/register" 
-          element={user ? <Navigate to="/profile" replace /> : <RegistrationPage />} 
+          element={user ? <Navigate to="/profile" replace /> : <RegistrationPage setUser={setUser}/>} 
         />
         
         {/* For protected routes, redirect to login if not logged in */}
         <Route
           path="/profile"
-          element={user ? <ProfilePage /> : <Navigate to="/login" replace />}
+          element={user ? <ProfilePage setUser={setUser}/> : <Navigate to="/login" replace />}
         />
         <Route
           path="/addSong"
-          element={user ? <AddSongPage /> : <Navigate to="/login" replace />}
+          element={user ? <AddSongPage setUser={setUser}/> : <Navigate to="/login" replace />}
         />
       </Routes>
     </Router>
