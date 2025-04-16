@@ -2,57 +2,87 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import './loginPage.css';
+import { loginUser, getCurrentUser } from '../../firebase'
 
-function LoginPage() {
+function LoginPage({ setUser }) {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
-  // function to handle navigation
-  const goToProfile = () => {
-    navigate('/profile');
-  };
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // function to handle login submission 
-  // fix later to deal with authentication w/ firebase--function needs to be asynchronous
-  const handleSubmit = (e) => {
+  // function to handle login submission w/ authentication
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    // handle authentication here
-    console.log('Login attempt with:', username, password);
-    goToProfile();
-  }
+    try {
+      const result = await loginUser(email, password);
+      if (result.success) {
+        // login successful
+        localStorage.setItem('userId', result.userData.uid);
+        console.log('login successful');
+        //window.location.reload();
+        setUser(result.userData);
+        navigate('/profile', { replace: true, state: { time: Date.now() } });
+        //navigate('/profile');
+      } else {
+        // login failed
+        setError(result.error || 'Login failed. Please check your email and password.');
+      }
+    } catch (error) {
+      console.error('Login error: ', error);
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
   
   return (
     <div className="login-page">
+      <div className = "logo">
+        <h1>GoodTunes</h1>
+      </div>
       <div className="login-form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="username"
-              required
-            />
-          </div>
-          
-          <div className="form-group">
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="password"
-              required
-            />
-          </div>
-          
-          <Button type="submit" className="login-button">
-            Login
-          </Button>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+              />            
+            </div>
+
+            <div className="form-group">
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+            </div>
+
+            {error && <div className="error-message">{error}</div>}
+
+            <Button
+              type="submit"
+              className="login-button"
+              disabled={loading}
+            >
+              {loading ? 'Logging in...' : 'Login'}
+            </Button>
+
+            <div className="login-links">
+              <a href="/register">Create Account</a>
+              <a href="/forgot-password">Forgot Password</a>
+            </div>
+          </form>     
       </div>
     </div>
   );
