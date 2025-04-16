@@ -1,61 +1,81 @@
+
 .login-page {
-    /* full-page background */
-    background-color: #768f83; /* Sage green color from the image */
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-form-container {
-    /* center the form both horizontally and vertically */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 400px; /* Adjust as needed */
-    padding-top: 80px;
-  }
-  
-  form {
-    /* center the form contents */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .form-group {
-    width: 100%;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  input {
-    padding: 8px 12px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .login-button {
-    margin-top: 10px;
-    padding: 8px 24px;
-    background-color: #ccc;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 200px;
-    height: 50px;
-  }
-  
-  .login-button:hover {
-    background-color: #bbb;
-  }
+  background-color: #768f83;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-form-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+input {
+  padding: 12px 18px;
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #4a7c59;
+  outline: none;
+}
+
+.login-button {
+  background-color: #4a7c59;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  max-width: 350px;
+}
+
+.login-button:hover {
+  background-color: #3a6649;
+  transform: scale(1.05);
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/*remember me & forgot password part of log in*/
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.form-options a {
+  color: #4a7c59;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-options a:hover {
+  text-decoration: underline;
+}
+
