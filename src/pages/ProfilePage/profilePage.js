@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/button';
+import LogoutButton from '../../components/LogoutButton/logoutButton'
 import './profilePage.css';
 
-function ProfilePage() {
+function ProfilePage({ setUser }) {
   const navigate = useNavigate();
 
   // Simulated user info (you'll replace this with real data later)
@@ -25,6 +26,7 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
+<<<<<<< HEAD
       <h1>Welcome to Your Profile! 🌟</h1>
 
       <div className="profile-info">
@@ -43,6 +45,11 @@ function ProfilePage() {
       <button className="logout-button" onClick={handleLogout}>
         Logout 🚪
       </button>
+=======
+      <h1>Profile Page</h1>
+      <LogoutButton className="profile-logout-button" />
+      <Button to={"/addSong"}>Go to Add Song</Button>
+>>>>>>> 80941917dcf11a14aecb2ee581f37ee1edb115ab
     </div>
   );
 }
