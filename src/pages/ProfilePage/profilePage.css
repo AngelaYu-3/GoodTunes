@@ -6,6 +6,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+
+.profile-page {
+  background-color: #768f83;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: 'Arial', sans-serif;
   text-align: center;
   padding: 20px;
@@ -15,9 +27,9 @@
 
 h1 {
   color: #fff;
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -43,8 +55,8 @@ h1 {
 
 /* 🎵 Add Song Button */
 .profile-button {
-  background-color: #4a7c59;
-  color: white;
+  background-color: #d2d0c9;
+  color: #333;
   border: none;
   padding: 12px 24px;
   font-size: 1.2rem;
@@ -62,15 +74,16 @@ h1 {
 
 /* 😴 Logout Button */
 .logout-button {
-  background-color: #e74c3c; /* Red button */
-  color: white;
+  background-color: #cb776e; /* Red button */
+  color: #333;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 10px;
+  width: 200px;
 }
 
 .logout-button:hover {
