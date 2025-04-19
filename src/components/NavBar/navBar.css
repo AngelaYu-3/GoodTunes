@@ -1,0 +1,101 @@
+/* navbar.css */
+.navbar {
+  background-color: #d2c8c1;
+  width: 100%;
+  padding: 0;
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Position it at the top of the viewport */
+  left: 0; /* Ensure it starts from the left edge */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0; /* Minimal vertical padding */
+  max-width: 100%;
+  margin: 0;
+  height: 40px; /* Explicitly set height */
+}
+
+.logo-container {
+  flex: 0 0 auto;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  font-size: 25px; /* Kept original size */
+  font-weight: bold;
+  color: rgb(8, 1, 1);
+  text-decoration: none;
+  line-height: 1; /* Tight line height */
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-right: 20px;
+  height: 100%;
+}
+
+/* Apply to both button and NavLink */
+.nav-button, 
+.nav-buttons button {
+  background-color: #73877b;
+  color: rgb(9, 9, 9);
+  font-weight: 600 !important; /* Force consistent font weight */
+  border: none;
+  padding: 0 12px; /* Remove vertical padding, keep horizontal */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px; /* Kept original size */
+  text-decoration: none;
+  transition: background-color 0.2s;
+  height: 30px; /* Fixed height for buttons */
+  display: flex;
+  align-items: center;
+}
+
+/* Apply hover state to both */
+.nav-button:hover,
+.nav-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.398);
+}
+
+.nav-button.active {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.708);
+}
+
+.nav-button.disabled {
+  cursor: not-allowed;
+  pointer-events: none; /* Prevents clicking while disabled */
+}
+
+/* Make navbar responsive */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    height: auto;
+    padding: 5px 0;
+  }
+  
+  .logo-container {
+    margin-bottom: 3px;
+    padding-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+    padding-right: 0;
+  }
+}
