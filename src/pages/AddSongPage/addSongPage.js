@@ -11,7 +11,9 @@ function AddSongPage() {
   const [user, setUser] = useState(null);
   const [formData, setFormData] = useState({
     title: '',
-    artist: ''
+    artist: '',
+    review: '',
+    rating: 0
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -39,6 +41,10 @@ function AddSongPage() {
       ...formData,
       [name]: value
     });
+  };
+  
+  const handleRating = (value) => {
+    setFormData(prev => ({ ...prev, rating: value }));
   };
   
   // Handle form submission
@@ -69,6 +75,8 @@ function AddSongPage() {
         songData: {
           title: formData.title,
           artist: formData.artist,
+          review: formData.review,
+          rating: formData.rating,
           createdAt: new Date().toISOString()
         }
       };
@@ -90,7 +98,8 @@ function AddSongPage() {
       // Reset form
       setFormData({
         title: '',
-        artist: ''
+        artist: '',
+        review: ''
       });
       
       // Automatically redirect to profile after delay
@@ -166,6 +175,34 @@ function AddSongPage() {
                 />
               </div>
               
+              <div className="form-group">
+                <label className="review-label" htmlFor="review">Review</label>
+                <input
+                  type="text"
+                  id="review"
+                  name="review"
+                  value={formData.review}
+                  onChange={handleInputChange}
+                  placeholder="Write your review here"
+                />
+              </div>
+
+              <div className="form-group rating-group">
+                <label className="song-label">Rating</label>
+                <div className="rating-selector">
+                  {[1,2,3,4,5].map((n) => (
+                    <span
+                      key={n}
+                      className={`note-icon${formData.rating >= n ? ' selected' : ''}`}
+                      onClick={() => handleRating(n)}
+                    >
+                      {/* single‑note character; you can swap to &#9835; for ♫ */}
+                      &#9834;
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               <div className="form-buttons">
                 <Button 
                   type="submit" 

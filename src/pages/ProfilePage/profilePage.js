@@ -94,6 +94,21 @@ function ProfilePage() {
                   <div className="song-info">
                     <h3>{song.title}</h3>
                     <p>Artist: {song.artist}</p>
+                    {song.review && <p>Review: {song.review}</p>}
+
+                    {/* ← New rating display */}
+                    {typeof song.rating === 'number' && (
+                      <div className="rating-display">
+                        {[1,2,3,4,5].map(n => (
+                          <span
+                            key={n}
+                            className={`note-icon${song.rating >= n ? ' selected' : ''}`}
+                          >
+                            &#9834;
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <button 
                     className="remove-song-button" 
