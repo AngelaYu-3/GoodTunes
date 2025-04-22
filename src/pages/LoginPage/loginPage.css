@@ -12,6 +12,7 @@
 
 .logo {
   font-size: 55px;
+  color: aqua;
 }
 
 .login-form-container {
@@ -158,4 +159,3 @@ input {
   .form-options a:hover {
     text-decoration: underline;
   }
-  
