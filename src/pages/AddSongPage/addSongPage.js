@@ -99,7 +99,8 @@ function AddSongPage() {
       setFormData({
         title: '',
         artist: '',
-        review: ''
+        review: '',
+        rating: 0
       });
       
       // Automatically redirect to profile after delay
@@ -196,7 +197,7 @@ function AddSongPage() {
                       className={`note-icon${formData.rating >= n ? ' selected' : ''}`}
                       onClick={() => handleRating(n)}
                     >
-                      {/* single‑note character; you can swap to &#9835; for ♫ */}
+                      {/* you can swap to &#9835; for ♫ */}
                       &#9834;
                     </span>
                   ))}

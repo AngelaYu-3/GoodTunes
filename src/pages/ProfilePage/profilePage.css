@@ -55,3 +55,18 @@ h3 {
   background: radial-gradient(ellipse at center, rgb(173, 122, 112), rgb(240, 193, 184));
   transform: scale(1.05);
 }
+
+.rating-display {
+  margin-top: 0.5rem;
+}
+
+.note-icon {
+  font-size: 1.25rem;
+  color: #ccc;           /* empty note color */
+  margin-right: 0.25rem;
+  user-select: none;
+}
+
+.note-icon.selected {
+  color: #f5a623;        /* filled note color */
+}

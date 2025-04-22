@@ -95,8 +95,6 @@ function ProfilePage() {
                     <h3>{song.title}</h3>
                     <p>Artist: {song.artist}</p>
                     {song.review && <p>Review: {song.review}</p>}
-
-                    {/* ← New rating display */}
                     {typeof song.rating === 'number' && (
                       <div className="rating-display">
                         {[1,2,3,4,5].map(n => (
