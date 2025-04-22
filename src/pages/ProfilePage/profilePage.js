@@ -77,13 +77,13 @@ function ProfilePage() {
       <Navbar />
       
       <div className="profile-page">
-        <h1>Welcome to Your Profile, {user?.username || 'User'}!</h1>
+        <h1>{user?.username || 'User'}'s profile</h1>
         
         {/* User information */}
         
         {/* User's songs list */}
         <div className="songs-container">
-          <h2>Your Songs</h2>
+          <h2>Your Good Tunes:</h2>
           
           {songs.length === 0 ? (
             <p>You haven't added any songs yet. Click "Add Song" to get started!</p>

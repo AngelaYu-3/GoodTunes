@@ -141,7 +141,7 @@ function AddSongPage() {
             
             <form className="song-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="title">Song Title</label>
+                <label className="song-label" htmlFor="title">Song Title</label>
                 <input
                   type="text"
                   id="title"
@@ -154,7 +154,7 @@ function AddSongPage() {
               </div>
               
               <div className="form-group">
-                <label htmlFor="artist">Artist</label>
+                <label className="artist-label" htmlFor="artist">Artist</label>
                 <input
                   type="text"
                   id="artist"
