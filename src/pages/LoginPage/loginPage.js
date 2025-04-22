@@ -41,12 +41,9 @@ function LoginPage({ setUser }) {
   
   return (
     <div className="login-page">
-      <div className = "logo">
-        <h1>GoodTunes</h1>
-      </div>
       <div className="login-form-container">
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="enter-email">
               <input
                 type="email"
                 id="email"
@@ -57,7 +54,7 @@ function LoginPage({ setUser }) {
               />            
             </div>
 
-            <div className="form-group">
+            <div className="enter-password">
               <input
                 type="password"
                 id="password"
@@ -67,6 +64,11 @@ function LoginPage({ setUser }) {
                 required
               />
             </div>
+            <div className="forgot-password">
+              <a href="/forgot-password" class="forgot-password-link">
+                Forgot Password?
+              </a>
+            </div>
 
             {error && <div className="error-message">{error}</div>}
 
@@ -75,12 +77,13 @@ function LoginPage({ setUser }) {
               className="login-button"
               disabled={loading}
             >
-              {loading ? 'Logging in...' : 'Login'}
+              {loading ? 'Logging in...' : 'LOG IN'}
             </Button>
 
-            <div className="login-links">
-              <a href="/register">Create Account</a>
-              <a href="/forgot-password">Forgot Password</a>
+            <div className="register">
+              <a href="/register">
+                CREATE AN ACCOUNT
+              </a>
             </div>
           </form>     
       </div>

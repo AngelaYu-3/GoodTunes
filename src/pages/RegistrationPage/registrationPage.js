@@ -121,7 +121,9 @@ function RegistrationPage() {
             </Button>
             
             <div className="login-link">
-              Already have an account? <a href="/login">Log In</a>
+              <a href="/login">
+                Already have an account? Log In
+              </a>
             </div>
           </form>
         )}

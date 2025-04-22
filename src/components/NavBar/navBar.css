@@ -1,6 +1,6 @@
 /* navbar.css */
 .navbar {
-  background-color: #d2c8c1;
+  background-color: rgb(5,22,5);
   width: 100%;
   padding: 0;
   position: fixed; /* Fix the navbar at the top */
@@ -9,63 +9,71 @@
   z-index: 1000; /* Ensure it stays above other content */
 }
 
-
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3px 0; /* Minimal vertical padding */
+  padding: 15px 0; /* Minimal vertical padding */
   max-width: 100%;
   margin: 0;
-  height: 40px; /* Explicitly set height */
+  height: 50px; /* Explicitly set height */
 }
 
 .logo-container {
   flex: 0 0 auto;
-  padding-left: 20px;
+  padding-left: 15px;
+  margin-top: 2px;
   display: flex;
   align-items: center;
   height: 100%;
 }
 
 .logo {
-  font-size: 25px; /* Kept original size */
+  font-size: 60px; /* Kept original size */
   font-weight: bold;
-  color: rgb(8, 1, 1);
+  color: rgb(110,130,105);
   text-decoration: none;
-  line-height: 1; /* Tight line height */
+  font-family: "F8 Heavy";
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-buttons {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
-  padding-right: 20px;
+  padding-right: 15px;
   height: 100%;
 }
 
 /* Apply to both button and NavLink */
 .nav-button, 
 .nav-buttons button {
-  background-color: #73877b;
-  color: rgb(9, 9, 9);
+  background-color: rgb(110,130,105);
+  color: rgb(5,22,5);
   font-weight: 600 !important; /* Force consistent font weight */
   border: none;
   padding: 0 12px; /* Remove vertical padding, keep horizontal */
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px; /* Kept original size */
+  font-size: 22px; /* Kept original size */
   text-decoration: none;
   transition: background-color 0.2s;
-  height: 30px; /* Fixed height for buttons */
+  transition: all 0.3s ease;
+  height: 40px; /* Fixed height for buttons */
   display: flex;
   align-items: center;
+  font-family: "F8 Heavy";
 }
 
 /* Apply hover state to both */
 .nav-button:hover,
 .nav-buttons button:hover {
-  background-color: rgba(255, 255, 255, 0.398);
+  background-color: rgba(70, 90, 65, 1);
+  transform: scale(1.05);
 }
 
 .nav-button.active {

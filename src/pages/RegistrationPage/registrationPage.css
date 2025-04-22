@@ -1,22 +1,25 @@
-.registration-page {
-    /* full-page background */
-    background-color: #768f83; /* Sage green color from the image */
+  .registration-page {
+    background-image: url("images/registerBG.jpg"); /* background image */
+    background-size: auto 100%; /* crop image to snap to height */
+    background-position: center center;
     min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+    position: relative;
+    font-family: 'Unbounded', sans-serif;
   }
   
-  .login-form-container {
-    /* center the form both horizontally and vertically */
+  .registration-form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 400px; /* Adjust as needed */
-    padding-top: 80px;
+    padding-top: 125px;
   }
   
   form {
@@ -42,20 +45,40 @@
     font-size: 16px;
   }
   
-  .login-button {
+  .register-button {
     margin-top: 10px;
-    padding: 8px 24px;
-    background-color: #ccc;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
+    padding: 12px 24px;
+    height: 60px;
+    width: 100%;
+
+    background: radial-gradient(ellipse at center, rgb(60,95,50), rgb(35, 50, 35));
+    
+    font-family: 'Unbounded', sans-serif;
+    font-size: 25px;
+    color: rgb(245, 228, 215);
+    
     cursor: pointer;
-    transition: background-color 0.3s;
-    width: 200px;
-    height: 50px;
+    transition: all 0.3s ease;
   }
   
-  .login-button:hover {
+  .register-button:hover {
     background-color: #bbb;
+    transform: scale(1.05);
+  }
+
+  .login-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 25px;
+
+    color: rgb(110,130,105);  
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  .login-link a {
+    color: rgb(110,130,105);
   }

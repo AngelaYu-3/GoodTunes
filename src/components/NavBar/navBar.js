@@ -55,7 +55,7 @@ function Navbar() {
             className="nav-button"
             onClick={handleLogout}
           >
-            Logout
+            Log Out
           </NavLink>
         </div>
       </div>
