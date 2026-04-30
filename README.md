@@ -23,3 +23,20 @@ React, React Router, Firebase Auth, Firebase Realtime Database, JavaScript, CSS
 2. `npm install`
 3. Add your Firebase config to `firebase.js`
 4. `npm start`
+
+## Screenshots
+
+### Login
+![Login](demo_images/login.png)
+
+### Register
+![Register](demo_images/register.png)
+
+### Profile
+![Profile](demo_images/profile.png)
+
+### Add Song
+![Register](demo_images/add_song.png)
+
+### Modified Profile
+![Register](demo_images/new_profile.png)
