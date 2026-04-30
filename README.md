@@ -27,16 +27,16 @@ React, React Router, Firebase Auth, Firebase Realtime Database, JavaScript, CSS
 ## Screenshots
 
 ### Login
-![Login](demo_images/login.png)
+<img src="demo_images/login.png" width="800"/>
 
 ### Register
-![Register](demo_images/register.png)
+<img src="demo_images/register.png" width="800"/>
 
 ### Profile
-![Profile](demo_images/profile.png)
+<img src="demo_images/profile.png" width="800"/>
 
 ### Add Song
-![Register](demo_images/add_song.png)
+<img src="demo_images/add_song.png" width="800"/>
 
 ### Modified Profile
-![Register](demo_images/new_profile.png)
+<img src="demo_images/new_profile.png" width="800"/>
